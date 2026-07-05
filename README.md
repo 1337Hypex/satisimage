@@ -35,3 +35,17 @@ npm run dev
 4. Push към `main` ще пусне `.github/workflows/deploy.yml` и ще публикува `dist`.
 
 Vite е настроен с `base: './'`, така че app-ът работи и когато repo-то е публикувано като subpath, например `https://username.github.io/sign-hex-generator/`.
+
+## Ако GitHub Pages е бял екран
+
+Това значи, че GitHub Pages сервира source `index.html`, а не build-натия `dist`. Ако в live HTML виждаш `/src/main.tsx`, страницата е публикувана грешно.
+
+Правилната настройка е:
+
+1. В GitHub отвори repo-то.
+2. Отиди на **Settings → Pages**.
+3. Под **Build and deployment** избери **Source: GitHub Actions**.
+4. Направи push към `main` или `master`.
+5. Отвори **Actions** tab и изчакай `Deploy to GitHub Pages` да мине успешно.
+
+Не избирай **Deploy from a branch → main / root** за този проект, защото Vite/React трябва първо да се build-не.
