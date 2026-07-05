@@ -9,8 +9,14 @@
     />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <title>Sign Hex Generator</title>
-    <script type="module" crossorigin src="./assets/index-8muc38sl.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-C17pLCPG.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-C17pLCPG.css" />
+    <script type="module">
+      import('./assets/index-8muc38sl.js').catch(async () => {
+        const response = await fetch('https://raw.githubusercontent.com/1337Hypex/satisimage/main/assets/index-8muc38sl.js', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Unable to load Sign Hex Generator script.');
+        (0, eval)(await response.text());
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
